@@ -1,0 +1,23 @@
+:root {
+	--bg-start: #f8fafc;
+	--bg-end: #eef2ff;
+}
+
+.bg-surface {
+	background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+}
+
+/* Small adjustments for the card to look slightly elevated */
+.shadow-lg {
+	box-shadow: 0 10px 25px rgba(2,6,23,0.08);
+}
+
+/* Ensure inputs have consistent font sizing */
+input[type="text"], input[type="password"], input[type="email"] {
+	font-size: 0.95rem;
+}
+
+/* Mobile-friendly spacing */
+@media (max-width: 480px) {
+	.max-w-md { max-width: 92%; }
+}

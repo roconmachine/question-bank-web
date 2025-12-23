@@ -1,0 +1,127 @@
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link, useNavigate, useParams } from 'react-router';
+import { handleServerError, setYupDefaults } from 'app/common/utils';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { QuestionDTO } from 'app/question/question-model';
+import axios from 'axios';
+import InputRow from 'app/common/input-row/input-row';
+import useDocumentTitle from 'app/common/use-document-title';
+import * as yup from 'yup';
+
+
+function getSchema() {
+  setYupDefaults();
+  return yup.object({
+    questionText: yup.string().emptyToNull().required(),
+    correctScore: yup.string().emptyToNull().numeric(5, 2),
+    incorrectScore: yup.string().emptyToNull().numeric(5, 2),
+    lang: yup.string().emptyToNull().max(20),
+    shapeData: yup.string().emptyToNull(),
+    updatedBy: yup.string().emptyToNull().max(100),
+    optA: yup.string().emptyToNull().max(255),
+    optB: yup.string().emptyToNull().max(255),
+    optC: yup.string().emptyToNull().max(255),
+    optD: yup.string().emptyToNull().max(255),
+    answer: yup.string().emptyToNull().max(255).required(),
+    set: yup.number().integer().emptyToNull().required(),
+    category: yup.number().integer().emptyToNull(),
+    questionTagTags: yup.array(yup.number().required()).emptyToNull().json()
+  });
+}
+
+export default function QuestionEdit() {
+  const { t } = useTranslation();
+  useDocumentTitle(t('question.edit.headline'));
+
+  const navigate = useNavigate();
+  const [setValues, setSetValues] = useState<Map<number,string>>(new Map());
+  const [categoryValues, setCategoryValues] = useState<Map<number,string>>(new Map());
+  const [questionTagTagsValues, setQuestionTagTagsValues] = useState<Map<number,string>>(new Map());
+  const params = useParams();
+  const currentId = +params.id!;
+
+  const useFormResult = useForm({
+    resolver: yupResolver(getSchema()),
+  });
+
+  const prepareForm = async () => {
+    try {
+      const setValuesResponse = await axios.get('/api/questions/setValues');
+      setSetValues(setValuesResponse.data);
+      const categoryValuesResponse = await axios.get('/api/questions/categoryValues');
+      setCategoryValues(categoryValuesResponse.data);
+      const questionTagTagsValuesResponse = await axios.get('/api/questions/questionTagTagsValues');
+      setQuestionTagTagsValues(questionTagTagsValuesResponse.data);
+      const data = (await axios.get('/api/questions/' + currentId)).data;
+      if (data.questionTagTags) {
+        data.questionTagTags = JSON.stringify(data.questionTagTags, undefined, 2);
+      }
+      // ensure numeric score defaults if server doesn't provide them
+      if (data.correctScore === undefined || data.correctScore === null || data.correctScore === '') {
+        data.correctScore = '1';
+      }
+      if (data.incorrectScore === undefined || data.incorrectScore === null || data.incorrectScore === '') {
+        data.incorrectScore = '0';
+      }
+      useFormResult.reset(data);
+    } catch (error: any) {
+      handleServerError(error, navigate);
+    }
+  };
+
+  useEffect(() => {
+    prepareForm();
+  }, []);
+
+  const updateQuestion = async (data: QuestionDTO) => {
+    window.scrollTo(0, 0);
+    try {
+      const username = (() => {
+        try { return sessionStorage.getItem('username') || undefined; } catch (e) { return undefined; }
+      })();
+      const payload = { ...data, updatedBy: username, shapeType: 'SVG' };
+      await axios.put('/api/questions/' + currentId, payload);
+      navigate('/questions', {
+            state: {
+              msgSuccess: t('question.update.success')
+            }
+          });
+    } catch (error: any) {
+      handleServerError(error, navigate, useFormResult.setError, t);
+    }
+  };
+
+  return (<>
+    <div className="flex flex-wrap mb-6">
+      <h1 className="grow text-3xl md:text-4xl font-medium mb-2">{t('question.edit.headline')}</h1>
+      <div>
+        <Link to="/questions" className="inline-block text-white bg-gray-500 hover:bg-gray-600 focus:ring-gray-200 focus:ring-4 rounded px-5 py-2">{t('question.edit.back')}</Link>
+      </div>
+    </div>
+    <form onSubmit={useFormResult.handleSubmit(updateQuestion)} noValidate>
+      <input type="submit" value={t('question.edit.headline')} className="inline-block text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-300  focus:ring-4 rounded px-5 py-2 cursor-pointer mt-6 mb-5" />
+      <InputRow useFormResult={useFormResult} object="question" field="id" disabled={true} type="number" />
+      <InputRow useFormResult={useFormResult} object="question" field="questionText" required={true} type="textarea" />
+      <InputRow useFormResult={useFormResult} object="question" field="optA" />
+      <InputRow useFormResult={useFormResult} object="question" field="optB" />
+      <InputRow useFormResult={useFormResult} object="question" field="optC" />
+      <InputRow useFormResult={useFormResult} object="question" field="optD" />
+      <div className="md:grid grid-cols-12 gap-4 mb-4">
+        <label className="col-span-2 py-2">{t('question.correctScore.label')}</label>
+        <div className="col-span-5"><InputRow useFormResult={useFormResult} object="question" field="correctScore" type="number" /></div>
+        <label className="col-span-2 py-2">{t('question.incorrectScore.label')}</label>
+        <div className="col-span-3"><InputRow useFormResult={useFormResult} object="question" field="incorrectScore" type="number" /></div>
+      </div>
+      <InputRow useFormResult={useFormResult} object="question" field="lang" type="select" options={{ Eng: 'Eng', Ban: 'Ban' }} />
+      <InputRow useFormResult={useFormResult} object="question" field="shapeData" type="textarea" />
+
+      <InputRow useFormResult={useFormResult} object="question" field="answer" required={true} type="radio" options={{ A: t('question.optA.label'), B: t('question.optB.label'), C: t('question.optC.label'), D: t('question.optD.label') }} />
+      <InputRow useFormResult={useFormResult} object="question" field="set" required={true} type="select" options={setValues} />
+      <InputRow useFormResult={useFormResult} object="question" field="category" type="select" options={categoryValues} />
+      <InputRow useFormResult={useFormResult} object="question" field="questionTagTags" type="multiselect" options={questionTagTagsValues} />
+      <input type="submit" value={t('question.edit.headline')} className="inline-block text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-300  focus:ring-4 rounded px-5 py-2 cursor-pointer mt-6" />
+    </form>
+  </>);
+}

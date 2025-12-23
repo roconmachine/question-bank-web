@@ -1,0 +1,678 @@
+{
+  "app": {
+    "title": "Question Bank"
+  },
+  "navigation": {
+    "toggle": "Toggle navigation",
+    "home": "Home",
+    "settings": "Settings",
+    "access": "Access",
+    "question": "Question",
+    "upload": "Questions Upload"
+  },
+  "home": {
+    "index": {
+      "headline": "Welcome to your new app!",
+      "text": "Your app was created with <a href=\"https://bootify.io\" target=\"_blank\" className=\"underline\">Bootify.io</a> and can now be customized. If you are happy with the result, <strong>please recommend us to other developers</strong> - so Bootify.io can grow further.",
+      "swagger": {
+        "text": "Swagger is",
+        "link": "available here"
+      },
+      "exploreEntities": "Explore your entities"
+    }
+  },
+  "error": {
+    "page": {
+      "headline": "Error",
+      "message": "The page you are looking for is not available right now."
+    }
+  },
+  "user": {
+    "list": {
+      "headline": "Users",
+      "createNew": "Create new User",
+      "empty": "No Users could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add User",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "username": {
+      "label": "Username"
+    },
+    "fullName": {
+      "label": "Full Name"
+    },
+    "email": {
+      "label": "Email"
+    },
+    "passwordHash": {
+      "label": "Password Hash"
+    },
+    "isActive": {
+      "label": "Is Active"
+    },
+    "createdAt": {
+      "label": "Created At"
+    },
+    "userRoleRoles": {
+      "label": "User Role Roles"
+    },
+    "edit": {
+      "headline": "Edit User",
+      "back": "Back to list"
+    },
+    "create": {
+      "success": "User was created successfully."
+    },
+    "update": {
+      "success": "User was updated successfully."
+    },
+    "delete": {
+      "success": "User was removed successfully."
+    }
+  },
+  "role": {
+    "list": {
+      "headline": "Roles",
+      "createNew": "Create new Role",
+      "empty": "No Roles could be found.",
+      "edit": "Edit",
+      "delete": "Delete",
+      "assign": "Assign Resource"
+    },
+    "add": {
+      "headline": "Add Role",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "roleName": {
+      "label": "Role Name"
+    },
+    "description": {
+      "label": "Description"
+    },
+    "rolePermissionPermissions": {
+      "label": "Role Permission Permissions"
+    },
+    "edit": {
+      "headline": "Edit Role",
+      "back": "Back to list"
+    },
+    "user": {
+      "userRoleRoles": {
+        "referenced": "This entity is still referenced by User {{id}} via field User Role Roles."
+      }
+    },
+    "create": {
+      "success": "Role was created successfully."
+    },
+    "update": {
+      "success": "Role was updated successfully."
+    },
+    "delete": {
+      "success": "Role was removed successfully."
+    },
+    "assignUsers": {
+      "headline": "Assign Users",
+      "selectUsers": "Select Users",
+      "back": "Back to list",
+      "submit": "Assign Users",
+      "success": "Users were assigned to Role successfully.",
+      "selectUser": "Select a User"
+    }
+  },
+  "resource": {
+    "list": {
+      "headline": "Resources",
+      "createNew": "Create new Resource",
+      "empty": "No Resources could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Resource",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "resourceName": {
+      "label": "Resource Name"
+    },
+    "resourceType": {
+      "label": "Resource Type"
+    },
+    "resourcePath": {
+      "label": "Resource Path"
+    },
+    "parent": {
+      "label": "Parent"
+    },
+    "edit": {
+      "headline": "Edit Resource",
+      "back": "Back to list"
+    },
+    "resource": {
+      "parent": {
+        "referenced": "This entity is still referenced by Resource {{id}} via field Parent."
+      }
+    },
+    "permission": {
+      "resource": {
+        "referenced": "This entity is still referenced by Permission {{id}} via field Resource."
+      }
+    },
+    "create": {
+      "success": "Resource was created successfully."
+    },
+    "update": {
+      "success": "Resource was updated successfully."
+    },
+    "delete": {
+      "success": "Resource was removed successfully."
+    },
+    "assignResource":{
+      "headline" : "Add Resource",
+      "resourceSelectLebel" : "Select Resource",
+      "assignButton" : "Assign Resource",
+      "confirmUnassign" : "Are you sure you want to unassign this resource?"  
+    }
+  },
+  "permission": {
+    "list": {
+      "headline": "Permissions",
+      "createNew": "Create new Permission",
+      "empty": "No Permissions could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Permission",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "action": {
+      "label": "Action"
+    },
+    "resource": {
+      "label": "Resource"
+    },
+    "edit": {
+      "headline": "Edit Permission",
+      "back": "Back to list"
+    },
+    "role": {
+      "rolePermissionPermissions": {
+        "referenced": "This entity is still referenced by Role {{id}} via field Role Permission Permissions."
+      }
+    },
+    "create": {
+      "success": "Permission was created successfully."
+    },
+    "update": {
+      "success": "Permission was updated successfully."
+    },
+    "delete": {
+      "success": "Permission was removed successfully."
+    }
+  },
+  "providerType": {
+    "list": {
+      "headline": "Provider Types",
+      "createNew": "Create new Provider Type",
+      "empty": "No Provider Types could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Provider Type",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "updatedBy": {
+      "label": "Updated By"
+    },
+    "edit": {
+      "headline": "Edit Provider Type",
+      "back": "Back to list"
+    },
+    "contentProvider": {
+      "providerType": {
+        "referenced": "This entity is still referenced by Content Provider {{id}} via field Provider Type."
+      }
+    },
+    "exam": {
+      "providerType": {
+        "referenced": "This entity is still referenced by Exam {{id}} via field Provider Type."
+      }
+    },
+    "create": {
+      "success": "Provider Type was created successfully."
+    },
+    "update": {
+      "success": "Provider Type was updated successfully."
+    },
+    "delete": {
+      "success": "Provider Type was removed successfully."
+    }
+  },
+  "contentProvider": {
+    "list": {
+      "headline": "Content Providers",
+      "createNew": "Create new Content Provider",
+      "empty": "No Content Providers could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Content Provider",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "email": {
+      "label": "Email"
+    },
+    "website": {
+      "label": "Website"
+    },
+    "description": {
+      "label": "Description"
+    },
+    "updatedBy": {
+      "label": "Updated By"
+    },
+    "providerType": {
+      "label": "Provider Type"
+    },
+    "edit": {
+      "headline": "Edit Content Provider",
+      "back": "Back to list"
+    },
+    "create": {
+      "success": "Content Provider was created successfully."
+    },
+    "update": {
+      "success": "Content Provider was updated successfully."
+    },
+    "delete": {
+      "success": "Content Provider was removed successfully."
+    }
+  },
+  "exam": {
+    "list": {
+      "headline": "Exams",
+      "createNew": "Create new Exam",
+      "empty": "No Exams could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Exam",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "updatedBy": {
+      "label": "Updated By"
+    },
+    "providerType": {
+      "label": "Provider Type"
+    },
+    "edit": {
+      "headline": "Edit Exam",
+      "back": "Back to list"
+    },
+    "qSet": {
+      "exam": {
+        "referenced": "This entity is still referenced by QSet {{id}} via field Exam."
+      }
+    },
+    "create": {
+      "success": "Exam was created successfully."
+    },
+    "update": {
+      "success": "Exam was updated successfully."
+    },
+    "delete": {
+      "success": "Exam was removed successfully."
+    },
+    "provider": {
+      "label": "Content Provider"
+    }
+  },
+  "category": {
+    "list": {
+      "headline": "Categories",
+      "createNew": "Create new Category",
+      "empty": "No Categories could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Category",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "updatedBy": {
+      "label": "Updated By"
+    },
+    "parent": {
+      "label": "Parent"
+    },
+    "edit": {
+      "headline": "Edit Category",
+      "back": "Back to list"
+    },
+    "category": {
+      "parent": {
+        "referenced": "This entity is still referenced by Category {{id}} via field Parent."
+      }
+    },
+    "question": {
+      "category": {
+        "referenced": "This entity is still referenced by Question {{id}} via field Category."
+      }
+    },
+    "create": {
+      "success": "Category was created successfully."
+    },
+    "update": {
+      "success": "Category was updated successfully."
+    },
+    "delete": {
+      "success": "Category was removed successfully."
+    }
+  },
+  "qSet": {
+    "list": {
+      "headline": "QSets",
+      "createNew": "Create new QSet",
+      "empty": "No QSets could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add QSet",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "setName": {
+      "label": "Set Name"
+    },
+    "status": {
+      "label": "Status"
+    },
+    "updatedBy": {
+      "label": "Updated By"
+    },
+    "exam": {
+      "label": "Exam"
+    },
+    "isFree": {
+      "label": "Is Free"
+    },
+    "edit": {
+      "headline": "Edit QSet",
+      "back": "Back to list"
+    },
+    "question": {
+      "set": {
+        "referenced": "This entity is still referenced by Question {{id}} via field Set."
+      }
+    },
+    "create": {
+      "success": "QSet was created successfully."
+    },
+    "update": {
+      "success": "QSet was updated successfully."
+    },
+    "delete": {
+      "success": "QSet was removed successfully."
+    }
+  },
+  "answer": {
+    "list": {
+      "headline": "Answers",
+      "createNew": "Create new Answer",
+      "empty": "No Answers could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Answer",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "optionText": {
+      "label": "Option Text"
+    },
+    "updatedBy": {
+      "label": "Updated By"
+    },
+    "question": {
+      "label": "Question",
+      "answer": {
+        "referenced": "This entity is still referenced by Question {{id}} via field Answer."
+      }
+    },
+    "edit": {
+      "headline": "Edit Answer",
+      "back": "Back to list"
+    },
+    "create": {
+      "success": "Answer was created successfully."
+    },
+    "update": {
+      "success": "Answer was updated successfully."
+    },
+    "delete": {
+      "success": "Answer was removed successfully."
+    }
+  },
+  "question": {
+    "count": {
+      "label": "# Questions"
+    },
+    "filter": {
+      "bySet": "Filter by Set"
+    },
+    "list": {
+      "headline": "Questions",
+      "createNew": "Create new Question",
+      "empty": "No Questions could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Question",
+      "back": "Back to list"
+    },
+      "upload": {
+       "csvUpload": "Upload Questions via CSV",
+      "selectFile": "Select CSV File",
+      "clear": "Clear",
+      "csvOnly": "Please select a CSV file only",
+      "fileTooLarge": "File is too large. Maximum size is 5MB",
+      "csvFormat": "CSV format: questionText,optA,optB,optC,optD,answer,correctScore, incorrectScore, lang,category",
+      "uploading": "Uploading...",
+      "parsing": "Parsing CSV file...",
+      "ready": "Ready to upload",
+      "csvParsed": "Successfully parsed {{count}} questions from CSV",
+      "csvError": "Error parsing CSV file. Please check the format.",
+      "success": "Successfully uploaded {{count}} questions!",
+      "submit": "Upload Questions"
+    },
+    "extract" : {
+      "headline": "Extract Questions from PDF",
+      "selectFile": "Select PDF File",
+      "clear": "Clear",
+      "pdfOnly": "Please select a PDF file only",
+      "fileTooLarge": "File is too large. Maximum size is 10MB",
+      "uploading": "Uploading...",
+      "processing": "Processing PDF file...",
+      "ready": "Ready to extract",
+      "success": "Successfully extracted {{count}} questions!"
+      
+    },
+    "id": {
+      "label": "Id"
+    },
+    "questionText": {
+      "label": "Question Text"
+    },
+    "correctScore": {
+      "label": "Correct Score"
+    },
+    "incorrectScore": {
+      "label": "Incorrect Score"
+    },
+    "lang": {
+      "label": "Lang"
+    },
+    "status": {
+      "label": "Status"
+    },
+    "shapeType": {
+      "label": "Shape Type"
+    },
+    "shapeData": {
+      "label": "Shape Data"
+    },
+    "updatedBy": {
+      "label": "Updated By"
+    },
+    "set": {
+      "label": "Set"
+    },
+    "category": {
+      "label": "Category"
+    },
+    "answer": {
+      "label": "Answer",
+      "question": {
+        "referenced": "This entity is still referenced by Answer {{id}} via field Question."
+      }
+    },
+    "optA": {
+      "label": "Option A"
+    },
+    "optB": {
+      "label": "Option B"
+    },
+    "optC": {
+      "label": "Option C"
+    },
+    "optD": {
+      "label": "Option D"
+    },
+    "questionTagTags": {
+      "label": "Question Tag Tags"
+    },
+    "edit": {
+      "headline": "Edit Question",
+      "back": "Back to list"
+    },
+    "create": {
+      "success": "Question was created successfully."
+    },
+    "update": {
+      "success": "Question was updated successfully."
+    },
+    "delete": {
+      "success": "Question was removed successfully."
+    }
+  },
+  "tag": {
+    "list": {
+      "headline": "Tags",
+      "createNew": "Create new Tag",
+      "empty": "No Tags could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Tag",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "tag": {
+      "label": "Tag"
+    },
+    "updatedBy": {
+      "label": "Updated By"
+    },
+    "edit": {
+      "headline": "Edit Tag",
+      "back": "Back to list"
+    },
+    "question": {
+      "questionTagTags": {
+        "referenced": "This entity is still referenced by Question {{id}} via field Question Tag Tags."
+      }
+    },
+    "create": {
+      "success": "Tag was created successfully."
+    },
+    "update": {
+      "success": "Tag was updated successfully."
+    },
+    "delete": {
+      "success": "Tag was removed successfully."
+    }
+  },
+  "select": {
+    "empty": {
+      "label": "Please select"
+    }
+  },
+  "delete": {
+    "confirm": "Do you really want to delete this element? This cannot be undone."
+  },
+  "operation": {
+    "success": "Your operation was successful."
+  },
+  "required": "Please provide a value.",
+  "maxlength": "Your value must have a length of less then ${max} characters.",
+  "valid": {
+    "offsetDateTime": "Please provide a valid date with offset, for example \"2026-01-23T14:55:00+01:00\".",
+    "numeric": {
+      "format": "Please provide a valid numeric number.",
+      "digits": "Your provided value is out of the valid range: <{{precision}} digits>.<{{scale}} digits> expected."
+    }
+  }
+}
