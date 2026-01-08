@@ -1,0 +1,17 @@
+services:
+  frontend:
+    container_name: question-bank-web 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run devserver
+networks:
+  question-bank-bridge:
+    driver: bridge
