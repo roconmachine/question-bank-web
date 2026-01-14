@@ -86,7 +86,7 @@ module.exports = (env, argv) => ({
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   },
   devServer: {
-    port: 3000,
+    port: env.PORT || 3000,
     compress: true,
     historyApiFallback: {
       disableDotRule: true
