@@ -3,7 +3,7 @@ services:
     container_name: question-bank-web 
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile      
     ports:
       - "3000:3000"
     volumes:
@@ -11,6 +11,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - PORT=3000
     command: npm run devserver
 networks:
   question-bank-bridge:

@@ -5,7 +5,7 @@ import InputErrors from 'app/common/input-row/input-errors';
 
 
 export default function InputRow({ useFormResult, object, field, type = 'text',
-    required = false, disabled = false, inputClass = '', options }: InputRowParams) {
+    required = false, disabled = false, inputClass = '', options, onBlur }: InputRowParams) {
   const { t } = useTranslation();
   const label = t(object + '.' + field + '.label') + (required ? '*' : '');
 
@@ -26,7 +26,9 @@ export default function InputRow({ useFormResult, object, field, type = 'text',
       setValue(field, '');
     }, []);
   }
-
+  // const onblurFunction = () => {
+  //   alert('hi');
+  // };
   return (
     <div className="md:grid grid-cols-12 gap-4 mb-4">
       {type === 'checkbox' ? (
@@ -50,7 +52,7 @@ export default function InputRow({ useFormResult, object, field, type = 'text',
             className={'w-full xl:w-3/4 border-gray-300 rounded ' + getInputClasses()} />
         ) : type === 'textarea' ? (
         <textarea id={field} {...register(field)} disabled={disabled}
-            className={'w-full xl:w-3/4 border-gray-300 rounded ' + getInputClasses()}></textarea>
+            className={'w-full xl:w-3/4 border-gray-300 rounded ' + getInputClasses()} onBlur={onBlur}></textarea>
         ) : type === 'select' || type === 'multiselect' ? (
         <select id={field} {...register(field)} multiple={type === 'multiselect'} disabled={disabled}
             className={'w-full xl:w-3/4 border-gray-300 rounded ' + getInputClasses()}>
@@ -92,5 +94,6 @@ interface InputRowParams {
   disabled?: boolean;
   inputClass?: string;
   options?: Record<string, string>|Map<number, string>;
+  onBlur?: (e: any) => void;
 
 }

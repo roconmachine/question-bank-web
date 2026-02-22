@@ -85,6 +85,20 @@ export default function QuestionAdd() {
     }
   };
 
+  const handleQuestionTextBlur = (e: any) => {
+    alert('hi' + e  );
+    // const val: string = (e && e.target && e.target.value) || '';
+    // if (!val) return;
+    // const banglaRegex = /[\u0980-\u09FF]+/g;
+    // const transformed = val.replace(banglaRegex, (match, offset, str) => {
+    //   if (offset > 0 && str[offset - 1] === '$') return match;
+    //   return '$' + match;
+    // });
+    // if (transformed !== val) {
+    //   useFormResult.setValue('questionText', transformed, { shouldDirty: true, shouldTouch: true });
+    // }
+  };
+
 return (<>
     <div className="flex flex-wrap mb-6">
       <h1 className="grow text-3xl md:text-4xl font-medium mb-2">{t('question.add.headline')}</h1>
@@ -95,7 +109,7 @@ return (<>
     <form onSubmit={useFormResult.handleSubmit(createQuestion)} noValidate>
       <InputRow useFormResult={useFormResult} object="question" field="set" required={true} type="select" options={setValues} />
       <InputRow useFormResult={useFormResult} object="question" field="category" type="select" options={categoryValues} />
-      <InputRow useFormResult={useFormResult} object="question" field="questionText" required={true} type="textarea" />
+      <InputRow useFormResult={useFormResult} object="question" field="questionText" required={true} type="textarea" onBlur={handleQuestionTextBlur} />
       <InputRow useFormResult={useFormResult} object="question" field="optA" />
       <InputRow useFormResult={useFormResult} object="question" field="optB" />
       <InputRow useFormResult={useFormResult} object="question" field="optC" />

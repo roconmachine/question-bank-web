@@ -7,9 +7,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const WarningsToErrorsPlugin = require('warnings-to-errors-webpack-plugin');
+//require('dotenv').config({ path: process.env.NODE_ENV === 'production' ? '.env' : '.env.development' });
 
-
-module.exports = (env, argv) => ({
+module.exports = (env, argv) => {
+  require('dotenv').config({ path: path.resolve(__dirname, argv && argv.mode === 'production' ? '.env' : '.env.development') });
+  return ({
   entry: {
     bundle: 'index.tsx'
   },
@@ -86,7 +88,7 @@ module.exports = (env, argv) => ({
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   },
   devServer: {
-    port: env.PORT || 3000,
+    port: parseInt(process.env.PORT || (env && env.PORT) || '3000', 10),
     compress: true,
     historyApiFallback: {
       disableDotRule: true
@@ -97,4 +99,5 @@ module.exports = (env, argv) => ({
       '**',
     ]
   }
-});
+  });
+};
